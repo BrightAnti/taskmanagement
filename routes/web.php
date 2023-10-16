@@ -22,12 +22,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-//    Route::get('/dashboard', function () {
-//        return view('dashboard');
-//    })->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
     // Update the root route to redirect to /tasks
-    Route::redirect('/', '/tasks');
+//    Route::redirect('/', '/tasks');
 
     //ROUTES FOR TASKS
     Route::get('/tasks',[TaskController::class, 'index'])->name('tasks.index');
@@ -40,6 +40,9 @@ Route::middleware([
     Route::delete('/tasks/{task}',[TaskController::class,'destroy'])->name('tasks.destroy');
     Route::post('/tasks/{task}/complete',[TaskController::class,'complete'])->name('tasks.complete');
     Route::get('/taskshow',[TaskController::class,'showCompleted'])->name('taskshow');
+
+
+
 });
 
 
